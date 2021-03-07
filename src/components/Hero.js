@@ -1,10 +1,15 @@
-import React from "react"
+import * as React from "react"
 import Image from "gatsby-image"
 import { Box, Heading,  Button } from 'theme-ui';
 
 import { Link } from "gatsby"
 import { graphql, useStaticQuery } from "gatsby"
 // ...GatsbyImageSharpFluid
+import { useState } from 'react';
+import { useEffect } from 'react';
+import moment from 'moment'
+import anImportantCalculation from '../utils/calculation';
+
 
 
 const query =  graphql `
@@ -21,34 +26,29 @@ const query =  graphql `
 
 
 const Hero = () => {
-  // const [today, settoday] = useState('')
+  const [today, settoday] = useState('')
 
-  // useEffect(() => {
-  //   anImportantCalculation()
+  useEffect(() => {
+    anImportantCalculation()
 
-    // setTimeout(() => {
-    //   settoday(moment().format('MMMM Do'))
-    // }, 1000)
+    setTimeout(() => {
+      settoday(moment().format('MMMM Do'))
+    }, 1000)
 
-  //   return () => {
+    return () => {
 
-  //   }
-  // }, [])
-  // const {
-  //   file: {
-  //     childImageSharp: { fluid },
-  //   },
-  // } = useStaticQuery(query)
+    }
+  }, [])
 
   const data = useStaticQuery(query);
-  // console.log(data)
 
 
   return (
     <Box sx={{
       position: 'relative'
     }}>
-     <Image fluid={data.fluid.childImageSharp.fluid}></Image>
+    <Image fluid={data.fluid.childImageSharp.fluid}></Image>
+
       <div style={{
         // backgroundImage: "url('/you-x-ventures-nF0nQuqBsrI-unsplash.jpg')",
         height: '50vh',
@@ -70,12 +70,14 @@ const Hero = () => {
         <Box sx={{
           zIndex: 1
         }}>
-          <Heading as="h1" mb="3" color="white">Full websites in 1 hour or less!</Heading>
-          {/* <Button>View Appointments for {today} </Button> */}
+          <Heading as="h1" mb="3" color="black">Full websites in 1 hour or less!</Heading>
+          <Button color="black" >View Appointments for {today} </Button>
         </Box>
       </div>
     </Box >
   );
 }
+
+
 
 export default Hero

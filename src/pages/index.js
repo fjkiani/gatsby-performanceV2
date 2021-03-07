@@ -4,7 +4,7 @@ import { Box, Button, Container, Grid, Heading, Text } from 'theme-ui'
 import Image from "gatsby-image"
 
 // import Footer from "../components/footer"
-// import Header from '../components/header/Header';
+import Header from '../components/header/Header';
 import Hero from "../components/Hero"
 // import Footer from "../components/Footer"
 
@@ -45,6 +45,7 @@ const IndexPage = ({data}) => {
 
   return (
     <main>
+    <Header/>
      <Hero/>
       <title>Home Page</title>
   
@@ -55,11 +56,6 @@ const IndexPage = ({data}) => {
       </Heading>
 
       {pictures.map(picture => {
-
-        // const fluid0 = picture.image.fluid[0]
-        // console.log(fluid0)
-
-        // const fluid = picture.image.localFiles[0].childImageSharp.fluid
 
 
         console.log(pictures)
